@@ -1,3 +1,5 @@
+var assert = require('assert');
+
 describe("Verify wether webdriveruniversity link on homepage work correctly", function () {
     it("check that the contact us buttons opens the contact us page", function (done) {
 
@@ -7,6 +9,7 @@ describe("Verify wether webdriveruniversity link on homepage work correctly", fu
         })
         browser.url('/')
         var title = browser.getTitle();
+        assert.equal(title, 'WebDriverUniversity.com');
         console.log('Title is: ' + title);
         browser.click('#contact-us')
         browser.pause(3000)
@@ -17,6 +20,7 @@ describe("Verify wether webdriveruniversity link on homepage work correctly", fu
         browser.url('/')
         browser.click('#login-portal')
         var title = browser.getTitle();
+        assert.equal(title, 'WebDriverUniversity.com');
         console.log('Title is: ' + title);
         browser.pause(3000)
     });
