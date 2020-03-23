@@ -11,7 +11,7 @@ if (process.env.SERVER === 'prod') {
 var timeout = process.env.DEBUG ? 99999999 : 10000;
 
 exports.config = {
-    
+
     //
     // ==================
     // Specify Test Files
@@ -135,7 +135,25 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    // reporters: ['dot'],
+    reporters: ['dot', 'junit', 'json', 'allure'],
+
+    // ACristobal run this command after generating the allure report:
+    // $ allure generate D:/Selenium-WebdriverIO/webdriverioFramework/reports/allure-results --clean
+    // $ allure open
+    reporterOptions: {
+        junit: {
+            outputDir: './reports/junit-results'
+        },
+        json: {
+            outputDir: './reports/json-results'
+        },
+        allure: {
+            outputDir: './reports/allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+            useCucumberStepReporter: false
+        }
+    },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -184,7 +202,7 @@ exports.config = {
      */
     // beforeCommand: function (commandName, args) {
     // },
-    
+
     /**
      * Hook that gets executed before the suite starts
      * @param {Object} suite suite details
@@ -221,7 +239,7 @@ exports.config = {
      */
     // afterSuite: function (suite) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
@@ -238,8 +256,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that ran
      */
-    // after: function (result, capabilities, specs) {
-    // },
+    /*
+    after: function (result, capabilities, specs) {
+        var name = 'ERROR-chrome' + Date.now();
+        browser.saveScreenshot('./errorShots/' + name + '.png');
+    },
+    */
     /**
      * Gets executed right after terminating the webdriver session.
      * @param {Object} config wdio configuration object
