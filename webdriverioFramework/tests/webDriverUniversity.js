@@ -1,5 +1,7 @@
 describe("Verify wether webdriveruniversity link on homepage work correctly", function () {
     it("check that the contact us buttons opens the contact us page", function (done) {
+        
+        this.timeout(20000);
 
         browser.setViewportSize({
             width: 1200,
