@@ -1,5 +1,21 @@
 var request = require('sync-request');
 
+browser.addCommand("submitDataViaContactUsForm", function (firstName, lastName, emailAddress, comments) {
+  if (firstName) {
+    browser.setValue("[name='first_name']", firstName);
+  }
+  if (lastName) {
+    browser.setValue("[name='last_name']", lastName);
+  }
+  if (emailAddress) {
+    browser.setValue("[name='email']", emailAddress);
+  }
+  if (comments) {
+    browser.setValue("[name='message']", comments);
+  }
+  browser.click("[type='submit']");
+});
+
 beforeEach(function () {
   browser.url('/Contact-Us/contactus.html');
 })
@@ -14,12 +30,8 @@ describe('Test Contact Us form WebdriverUni', function () {
   })
 
   contactusDetails.forEach(function (contactDetail) {
-    it.only('Should be able to submit a successful submission via contact us form', function (done) {
-      browser.setValue("[name='first_name']", 'Joe');
-      browser.setValue("[name='last_name']", 'Blogs');
-      browser.setValue("[name='email']", contactDetail.email);
-      browser.setValue("[name='message']", contactDetail.body);
-      browser.click("[type='submit']");
+    it('Should be able to submit a successful submission via contact us form', function (done) {
+      browser.submitDataViaContactUsForm('Joe', 'Blogs', contactDetail.email, contactusDetail.comment);
 
       var successfulContactConfirmation = browser.isExisting('#contact_reply h1');
       expect(successfulContactConfirmation, 'Successful submission Message does not exist').to.be.true;
