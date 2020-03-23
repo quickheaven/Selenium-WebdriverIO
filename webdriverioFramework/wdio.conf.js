@@ -8,7 +8,7 @@ if (process.env.SERVER === 'prod') {
 }
 
 // $ DEBUG=true npm test -- --specs=webdriverUniversityTest
-var timeout = process.env.DEBUG ? 99999999 : 10000;
+var timeout = process.env.DEBUG ? 99999999 : 100000;
 
 exports.config = {
     
