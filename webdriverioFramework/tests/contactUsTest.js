@@ -30,7 +30,7 @@ describe('Test Contact Us form WebdriverUni', function () {
   })
 
   contactusDetails.forEach(function (contactDetail) {
-    it('Should be able to submit a successful submission via contact us form', function (done) {
+    it('Test 1: Should be able to submit a successful submission via contact us form', function (done) {
       this.timeout(50000);
       browser.submitDataViaContactUsForm('joe', 'Blogs', contactDetail.email, contactDetail.body);
 
@@ -42,7 +42,7 @@ describe('Test Contact Us form WebdriverUni', function () {
     })
   });
 
-  it('Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
+  it('Test 2: Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
     browser.setValue("[name='first_name']", 'Mike');
     browser.setValue("[name='last_name']", 'Woods');
     browser.setValue("[name='email']", 'mike_woods@mail.com');
@@ -53,7 +53,7 @@ describe('Test Contact Us form WebdriverUni', function () {
   });
 
 
-  it('Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
+  it('Test 3: Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
     browser.setValue("[name='first_name']", 'Sarah');
     browser.setValue("[name='email']", 'sarah_woods@mail.com');
     browser.click("[type='submit']");
@@ -62,7 +62,7 @@ describe('Test Contact Us form WebdriverUni', function () {
     expect(successfulContactConfirmation, 'Successful submission Message does not exist').to.be.false;
   });
 
-  it('Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
+  it('Test 4: Should not be able to submit a successful submission via contact us form as all fields are required', function (done) {
     browser.setValue("[name='first_name']", 'Jim');
     browser.setValue("[name='last_name']", 'Jomes');
     browser.click("[type='submit']");
