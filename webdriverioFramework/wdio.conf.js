@@ -135,18 +135,21 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['dot', 'junit', 'json', 'allure'],
+    // reporters: ['dot', 'junit', 'json', 'allure'],
+    reporters: ['dot', 'allure'],
 
     // ACristobal run this command after generating the allure report:
     // $ allure generate D:/Selenium-WebdriverIO/webdriverioFramework/reports/allure-results --clean
     // $ allure open
     reporterOptions: {
+        /*
         junit: {
             outputDir: './reports/junit-results'
         },
         json: {
             outputDir: './reports/json-results'
         },
+        */
         allure: {
             outputDir: './reports/allure-results',
             disableWebdriverStepsReporting: true,

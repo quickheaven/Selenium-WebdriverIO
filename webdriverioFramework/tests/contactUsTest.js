@@ -31,6 +31,7 @@ describe('Test Contact Us form WebdriverUni', function () {
 
   contactusDetails.forEach(function (contactDetail) {
     it('Should be able to submit a successful submission via contact us form', function (done) {
+      this.timeout(50000);
       browser.submitDataViaContactUsForm('joe', 'Blogs', contactDetail.email, contactDetail.body);
 
       var successfulContactConfirmation = browser.isExisting('#contact_reply h1');
