@@ -1,0 +1,23 @@
+{
+  "name": "webdriverio-v5",
+  "version": "1.0.0",
+  "description": "Webdriverio v5 Test Automation Framework",
+  "main": "hello-world.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Webdriverio",
+    "Automation",
+    "Framework"
+  ],
+  "author": "Arjie Cristobal",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^6.1.11",
+    "@wdio/selenium-standalone-service": "^6.0.16",
+    "mocha": "^7.1.2",
+    "selenium-standalone": "^6.17.0",
+    "webdriverio": "^6.1.11"
+  }
+}
