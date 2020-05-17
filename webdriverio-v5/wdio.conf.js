@@ -188,6 +188,24 @@ exports.config = {
                 title: this.getTitle()
             };
         });        
+
+        browser.addCommand("waitAndClick", function (selector) {
+            try {
+                $(selector).waitForExist();
+                $(selector).click(); 
+            } catch(Error) {
+                throw new Error("Could not click on selector: " + $(selector));
+            }
+        });
+
+        browser.addCommand("waitAndSendkeys", function (selector, keys) {
+            try {
+                $(selector).waitForExist();
+                $(selector).setValue(keys);
+            } catch(Error) {
+                throw new Error("Could not send keys: " + $(keys) + ", using selector: " + $(selector));
+            }
+        });
     },
     /**
      * Runs before a WebdriverIO command gets executed.
